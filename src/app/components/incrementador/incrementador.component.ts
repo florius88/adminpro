@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-incrementador',
@@ -9,17 +9,25 @@ import { Component, Input } from '@angular/core';
 export class IncrementadorComponent {
 
   @Input('valor') progreso: number = 10;
+  /* @Input() progreso: number = 10; */
+
+  @Output('valor') valorSalida: EventEmitter<number> = new EventEmitter();
+  /* @Output() valorSalida: EventEmitter<number> = new EventEmitter(); */
+
 
   cambiarValor(valor: number) {
     if (this.progreso >= 100 && valor >= 0) {
+      this.valorSalida.emit(100)
       return this.progreso = 100
     }
 
-    if (this.progreso <= 100 && valor < 0) {
+    if (this.progreso <= 0 && valor < 0) {
+      this.valorSalida.emit(0)
       return this.progreso = 0
     }
 
-    return this.progreso = this.progreso + valor
+    this.progreso = this.progreso + valor
+    return this.valorSalida.emit(this.progreso)
   }
 
 }
