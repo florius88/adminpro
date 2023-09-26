@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { ChartData, ChartEvent } from 'chart.js';
 
@@ -12,17 +12,15 @@ import { ChartData, ChartEvent } from 'chart.js';
 export class GraficaDonutComponent {
 
   // Doughnut
-  public doughnutChartLabels: string[] = [
-    'Download Sales',
-    'In-Store Sales',
-    'Mail-Order Sales',
-  ];
-  public doughnutChartData: ChartData<'doughnut'> = {
+  @Input() titulo: string = 'Sin título'
+
+  @Input('labels') doughnutChartLabels: string[] = ['Label1', 'Label2', 'Label3',];
+
+  @Input('data') doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
     datasets: [
       {
         data: [350, 450, 100],
-        backgroundColor: ['#6857E6', "#009FEE", '#F02059'],
       },
     ],
   };
@@ -47,5 +45,6 @@ export class GraficaDonutComponent {
   }): void {
     console.log(event, active);
   }
+
 
 }
