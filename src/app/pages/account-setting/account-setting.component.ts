@@ -8,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AccountSettingComponent {
 
+  public linkTheme = document.querySelector('#theme')
+
+
+  changeTheme(theme: string) {
+
+    const url = `./assets/css/colors/${theme}.css`
+
+    this.linkTheme?.setAttribute('href', url)
+
+    // Vamos a guardar los settings para que, si recargo la pantalla
+    // no se pierda el tema que hemos elegido.
+    localStorage.setItem('theme', url)
+
+  }
+
 }
