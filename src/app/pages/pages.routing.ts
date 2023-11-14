@@ -7,6 +7,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { PagesComponent } from './pages.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'grafica1', component: Grafica1Component },
       { path: 'account-settings', component: AccountSettingComponent },
       { path: 'promises', component: PromisesComponent },
+      { path: 'rxjs', component: RxjsComponent },
     ]
   },
   //{ path: 'path/:routeParam', component: MyComponent },
