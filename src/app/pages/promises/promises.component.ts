@@ -9,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class PromisesComponent implements OnInit {
 
   ngOnInit(): void {
-    const promesa = new Promise((resolve, reject) => {
+
+    this.getUsuarios().then(usuarios => {
+      console.log(usuarios);
+    })
+
+    /* const promesa = new Promise((resolve, reject) => {
 
       if (false) {
         resolve('Hola Mundo')
@@ -24,7 +29,17 @@ export class PromisesComponent implements OnInit {
       console.log('Terminé');
     })
       .catch(error => console.log('Error en mi promesa', error)
-      )
+      ) */
+
+  }
+
+  getUsuarios() {
+
+    return new Promise(resolve => {
+      fetch('https://reqres.in/api/users')
+        .then(resp => resp.json())
+        .then(body => console.log(body.data))
+    })
 
   }
 
